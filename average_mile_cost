@@ -1,0 +1,64 @@
+'''
+
+ok, time to build the data on the sludge. let's take some averages.
+
+got the data.
+
+
+'''
+
+import matplotlib.pyplot as plt
+
+# start with the dictionary.
+
+miles = {
+    
+    "anderson, indiana": 5.5,
+    "belleville, illinois": 10,
+    "bethlehem, pennsylvania": 5,
+    "collinsville, illinois": 1,
+    "danville, virginia": 9,
+    "fort pierce, florida": 15,
+    "front royal, virginia": 0.25,
+    "grand rapids, michigan": 10,
+    "greeley, colorado": 7,
+    "beavercreek township, greene county, ohio": 4,
+    "lacrosse, wisconsin": 10,
+    "lawrenceville, illinois": 8,
+    "lebanon, pennsylvania": 5,
+    "louisville, kentucky": 3,
+    "macon, georgia": 1,
+    "rochelle, illinois": 6.5,
+    "salem, oregon": 5,
+    "salt lake city, utah": 5,
+    "springfield, ohio": 4,
+    "toledo, ohio": 34, #if we omit this one, avg miles is 6.4021 miles
+    "york, pennsylvania": 6,
+    "appleton, wisconsin": 12,
+    "littleton, colorado": 5,
+    "sheboygan, wisconsin": 10
+
+}
+    
+# of all these cities, what will be their avg distance?
+
+avg_miles = sum(miles.values()) / len(miles)
+
+plt.figure(figsize=(10, 6))
+
+plt.barh(list(miles.keys()), list(miles.values()), color='red')
+
+plt.axvline(x=avg_miles, color='k', linestyle='--', label=f'Average Distance: {avg_miles:.2f} miles')
+
+
+# plotting the shit
+
+plt.xlabel("miles")
+
+plt.ylabel("cities")
+
+plt.tight_layout() #make sure it fit 
+
+plt.savefig("miles.png", dpi = 300) #dots per inch, for clarity.
+
+plt.show()
