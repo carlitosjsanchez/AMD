@@ -1,0 +1,91 @@
+'''
+this is for the average cost to spend per mile.
+
+i will include operations, maintainence, labor, and sludge drying. all of it.
+
+the dry ton measurements already exist. now i need to do it per mile.
+
+so let's thug it out boi.
+
+'''
+
+import matplotlib.pyplot as plt
+
+#crank out the dictionary
+
+#costs are the city & the cost per dry ton, 
+# i'll add note if it's a liquid exception
+
+# ''city  name, cost per dry ton (as a number) ''
+
+cost = {
+
+"anderson, indiana": 19,
+ 
+"belleville, illinois": 34,
+
+"bethlehem, pennsylvania": 47,
+
+"collinsville, illinois": 34,
+
+"danville, virginia": 22,
+
+"fort pierce, florida": 81,
+
+"front royal, virginia": 5,
+
+"grand rapids, michigan": 15,
+
+"greeley, colorado": 8,
+
+"beavercreek township, greene county, ohio": 40, #exception, liquid
+
+"lacrosse, wisconsin": 81,
+
+"lawrenceville, illinois": 190,
+
+"lebanon, pennsylvania": 28, # exception, liquid
+
+"louisville, kentucky": 50,
+
+"macon, georgia": 8, # exception, liquid
+
+"rochelle, illinois": 89,
+
+"salem, oregon": 40, # exception, liquid
+
+"salt lake city, utah": 1,
+
+"springfield, ohio": 125, # exception, liquid
+
+"toledo, ohio": 117,
+
+"york, pennsylvania": 165
+
+}
+
+
+#IF WE OMIT THE TRIPLE DIGIT NUMBERS, WE GET ~$35.411 AS AVG. COST. 
+
+# of all these cities, what will be their avg price per dry ton?
+
+avg_cost = sum(cost.values()) / len(cost)
+
+plt.figure(figsize=(10, 6))
+
+plt.barh(list(cost.keys()), list(cost.values()), color='blue')
+
+plt.axvline(x=avg_cost, color='k', linestyle='--', label=f'Average Distance: {avg_cost:.2f} cost')
+
+
+# plotting the shit
+
+plt.xlabel("price per dry ton")
+
+plt.ylabel("cities")
+
+plt.tight_layout() #make sure it fit 
+
+plt.savefig("dryton.png", dpi = 450) #dots per inch, for clarity.
+
+plt.show()
